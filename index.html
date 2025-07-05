@@ -50,10 +50,13 @@
             gap: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
 
         .logo:hover {
             transform: scale(1.05);
+            text-decoration: none;
         }
 
         .logo-wave {
@@ -458,7 +461,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <a href="#hero" class="logo">
                     <svg class="logo-wave" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 15 Q4 12 6 8 T10 3 Q12 6 14 12 T18 18 Q20 22 22 18 T26 8 Q28 15 30 18 T34 25 Q36 20 38 15 T42 7 Q44 12 46 18 T50 15 Q52 8 54 12 T58 15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                     </svg>
@@ -466,7 +469,7 @@
                         <div class="logo-name">elena ralli</div>
                         <div class="logo-subtitle">electronic composition & sound engineering</div>
                     </div>
-                </div>
+                </a>
                 <nav>
                     <ul>
                         <li><a href="#about">About</a></li>
@@ -485,7 +488,7 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
                 <svg class="hero-wave" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -632,7 +635,7 @@
                     <div class="project-meta">2023-2026 • Collège Doctoral Glarean</div>
                     <p>Development of compositional processes through the sonification of scientific data from astrophysics research. A collaborative project between Hochschule für Musik Freiburg and Université de Strasbourg, exploring how astronomical phenomena can inform contemporary composition.</p>
                     <div class="project-details">
-                        Supervisors: Multiple institutions<br>
+                         <!--Supervisors: Multiple institutions<br>-->
                         <a href="https://college-glarean.unistra.fr/de/das-kolleg/organisation/mitglieder/doctorants/elena-ralli/" target="_blank" rel="noopener">→ Research Profile</a>
                     </div>
                 </div>
