@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Portfolio Item - Vertical Stack Design */
+        .portfolio-item {
+            margin-bottom: 120px;
+            background: #ffffff;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .portfolio-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .work-image {
+            width: 100%;
+            height: 70vh;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .work-image:hover {
+            transform: scale(1.02);
+        }
+
+        .work-image.dancing {
+            background-image: url('dancing_photo.jpg');
+        }
+
+        .work-image.bassphotons {
+            background-image: url('bass_dreisam.jpg');
+        }
+
+        .work-image.ursa {
+            background-image: url('ursa_score_photo.png');
+        }
+
+        /* Fallback wenn Bild nicht lädt */
+        .work-image {
+            background-color: #f0f0f0;
+        }
+
+        /* Press coverage section */
+        .work-press {
+            background: #f8f8f8;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 4px solid #666;
+        }
+
+        .press-title {
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 12px;
+        }
+
+        .press-excerpt {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .press-source {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .press-info {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .press-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .press-link:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .press-link::after {
+            content: '↗';
+            font-size: 12px;
+        }
+
+        /* Image caption overlay - minimal */
+        .image-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 15px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .work-content {
+            padding: 60px;
+            background: #ffffff;
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+
+        .work-title {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: #000;
+        }
+
+        .work-meta {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: right;
+        }
+
+        .work-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .work-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .work-technical {
+            font-size: 15px;
+            color: #666;
+        }
+
+        .tech-title {
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 12px;
+        }
+
+        .work-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .work-link {
+            display: inline-block;
+            padding: 15px 25px;
+            background: transparent;
+            color: #000;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            transition: all 0.3s ease;
+        }
+
+        .work-link:hover {
+            background: #000;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .work-image {
+                height: 50vh;
+            }
+
+            .work-content {
+                padding: 40px 20px;
+            }
+
+            .work-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .work-meta {
+                text-align: left;
+            }
+
+            .work-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="portfolio-item">
+            <div class="work-image dancing">
+                
+            </div>
+            <div class="work-content">
+                <div class="work-header">
+                    <div class="work-title">Dancing around SgrA*</div>
+                    <div class="work-meta">2024/25<br>Ensemble, Elektronik & Tanz</div>
+                </div>
+                
+                <div class="work-description">
+                    Sechs junge Sterne bewegen sich um ein schwarzes Loch. Ihre Entstehungsgeschichte ist für die Wissenschaft ein Rätsel. Das astrophysikalische Phänomen „paradox of youth" nutze ich als Material, um ein Stück zu gestalten, das eine klangliche Reise durch die Laufbahnen der sechs Sterne aus der Perspektive des Menschen erzählt. Daten und Merkmale der Bewegung der Sterne wirken auf die Struktur des Werks und beeinflussen Musik und Tanz.
+                </div>
+                 <!-- Commission Info -->
+                <div class="work-press" style="background: #f0f8ff; border-left-color: #4a90e2;">
+                    <div class="press-title">Auftragskomposition</div>
+                    <div class="press-excerpt">
+                        Kompositionsauftrag des Ensemble ö! für ihre Konzertsaison 2024/25
+                    </div>
+                    <div class="press-source">
+                        <div class="press-info">
+                            Ensemble ö! • Basel/Chur
+                        </div>
+                        <a href="https://ensemble-oe.ch/" target="_blank" class="press-link">
+                            Ensemble Website
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="work-details">
+                    
+                    <div class="work-links">
+                        <a href="https://youtu.be/MWwA1_6DLJU" target="_blank" class="work-link">Video</a>
+                        <a href="pdfs/dancing_partitur.pdf" target="_blank" class="work-link">Partitur</a>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BassPhotons Portfolio Item -->
+        <div class="portfolio-item">
+            <div class="work-image bassphotons">
+                
+            </div>
+            <div class="work-content">
+                <div class="work-header">
+                    <div class="work-title">BassPhotons</div>
+                    <div class="work-meta">2024<br>Interaktive Installation</div>
+                </div>
+                
+                <div class="work-description">
+                   Ein schwebender Kontrabass und eine 40 Meter hohe Gaskugel.
+Interaktive Klanginstallation über die Wahrnehmung unterschiedlicher Größen 
+im Universum. Die Besucher*innen sind eingeladen nach einer Möglichkeit zu 
+suchen, die stochastische Irrfahrt eines Klangphotons zu hören, der im Kern 
+des Basses entsteht. Die Gaskugel stellt in der Installation die Sonne dar, die 
+selbst eine Gaskugel aus Plasma ist. Ein Photon benötigt durchschnittlich 
+30.000 Jahre, um vom Kern der Sonne zu ihrer Oberfläche zu gelangen. 
+Dieses astrophysikalische Phänomen der zufälligen Photonbewegung, 
+bekannt als photon random walk, wird in der Installation durch den Klang 
+nachgebildet.
+                </div>
+                <div class="work-technical">
+                  Im Auftrag des Bürgervereins Gaskugel Freiburg für den Tag des offenen Denkmals <br>
+                  Gefördert durch das Kulturamt Freiburg <br>
+                </div>
+
+                <div class="work-press">
+                    <div class="press-title">Pressestimme • Badische Zeitung</div>
+                    <div class="press-excerpt">
+                        "[...]Mehr als erwartet sind auch zu Freiburgs neuestem Denkmal gekommen.[...]Zur Dreisam hin hat die Komponistin Elena Ralli eine Soundinstallation aufgebaut - ein Vorgeschmack, auf das, was der Arbeitskreis mit der Kugel vor hat.[...]"
+                    </div>
+                    <div class="press-source">
+                        <div class="press-info">
+                            Badische Zeitung • 09.09.2024
+                        </div>
+                        <a href="pdfs/bassphotons-badische-zeitung.pdf" target="_blank" class="press-link">
+                            Artikel lesen
+                        </a>
+                    </div>
+                </div>
+                <div class="work-details">
+                    
+                    <div class="work-links">
+                        <a href="https://youtu.be/EmWCGj5tEZo" target="_blank" class="work-link">Video</a>
+                        <a href="pdfs/documentation_BassPhotons.pdf" target="_blank" class="work-link">Technische Dokumentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ursa Portfolio Item -->
+        <div class="portfolio-item">
+            <div class="work-image ursa">
+                <div class="image-caption">Uraufführung • Carlos Cordeiro • HEAR Strasbourg</div>
+            </div>
+            <div class="work-content">
+                <div class="work-header">
+                    <div class="work-title">Ursa</div>
+                    <div class="work-meta">2023/24<br>Bassklarinette & 7-Kanal Elektronik</div>
+                </div>
+                
+                <div class="work-description">
+                    Die schöne Kallisto wurde von Hera in eine Bärin verwandelt und von Artemis getötet. Als Zeus seine Geliebte als tote Bärin fand, verwandelte er sie in ein Sternbild. Seitdem können wir sie jeden Abend am Himmel sehen. Das ist der Mythos dieses Sternbildes, das natürlich auch eine physikalische Seite hat. Die physikalischen Eigenschaften der sieben hellsten Sterne des Großen Wagens (Großer Bär) wurden musikalisch interpretiert und im Kompositionsprozess des Stückes verwendet.
+                </div>
+
+                <!-- Innovation Highlight -->
+                <div class="work-press" style="background: #f0fff0; border-left-color: #4caf50;">
+                    <div class="press-title">Breath-Sensor-Belt</div>
+                    <div class="press-excerpt">
+                        Entwicklung eines kabellosen Atem-Sensor-Gürtels zur Erfassung der Atemzyklen des Musikers. Die Sensor-Daten steuern die räumliche Klangverteilung der 7-Kanal Live-Elektronik und schaffen eine direkte Verbindung zwischen körperlicher Performance und elektronischer Raumgestaltung.
+                    </div>
+                    <div class="press-source">
+                        <div class="press-info">
+                            Physical Computing • Wearable Technology
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="work-details">
+                    
+                    <div class="work-links">
+                        <a href="https://www.youtube.com/watch?v=yHOl47Esf1E" target="_blank" class="work-link">Video</a>
+                        <a href="pdfs/Ursa_Ralli.pdf" target="_blank" class="work-link">Partitur</a>
+                        <a href="pdfs/sensor_design.pdf" target="_blank" class="work-link">Sensor-Design</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
