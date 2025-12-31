@@ -224,9 +224,29 @@
             transition: transform 0.4s ease;
         }
 
+        /* Larger/tall photo variant for vertical images */
+        .project-photo-big {
+            width: 100%;
+            height: 480px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
         .project-card:hover .project-photo,
-        .project-card.active .project-photo {
+        .project-card.active .project-photo,
+        .project-card:hover .project-photo-big,
+        .project-card.active .project-photo-big {
             transform: scale(1.05);
+        }
+
+        .project-photo-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .overlay {
@@ -532,6 +552,19 @@
             .section {
                 padding: 80px 0;
             }
+
+            /* Responsive height for tall/vertical project photos */
+            .project-photo-big {
+                height: 320px;
+            }
+
+            /* Extra small screens: keep tall photos compact and focus on top */
+            @media (max-width: 480px) {
+                .project-photo-big {
+                    height: 240px;
+                    background-position: center top;
+                }
+            }
         }
 
         /* Scroll indicator */
@@ -568,7 +601,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#works">Works</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <!--<li><a href="portfolio.html">Portfolio</a></li> -->
                         <li><a href="#research">Research</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -615,7 +648,9 @@
             <h2 class="section-title">Recent Works</h2>
             <div class="projects-grid">
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/etoiles.jpg')" aria-hidden="true"></div>
+                    <a href="pulsars.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/etoiles.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>pulsars</h3>
                         <div class="project-meta">2025 • Interactive Installation</div>
@@ -623,9 +658,10 @@
                         <div class="project-details">Installation: November 14, 2025, Tonstudios MH Freiburg</div>-->
                     </div>
                 </div>
-                
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/dancing.jpg')" aria-hidden="true"></div>
+                    <a href="portfolio.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/dancing.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Dancing around SgrA*</h3>
                         <div class="project-meta">2025 • Ensemble, Electronics & Dance</div>
@@ -641,7 +677,9 @@
                 
 
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/bassphotons.jpg')" aria-hidden="true"></div>
+                    <a href="portfolio.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/bassphotons.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>BassPhotons</h3>
                         <div class="project-meta">2024 • Interactive Installation</div>
@@ -653,7 +691,9 @@
                 </div>
 
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/ursa.jpg')" aria-hidden="true"></div>
+                    <a href="portfolio.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/ursa.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Ursa</h3>
                         <div class="project-meta">2024 • Bass Clarinet & 7-Channel Live Electronics</div>
@@ -665,7 +705,9 @@
                 </div>
 
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/atropos.jpg')" aria-hidden="true"></div>
+                    <a href="https://www.youtube.com/watch?v=dOHDzZnQajI" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/atropos.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Atropos</h3>
                         <div class="project-meta">2022 • Dance, Percussion & 8-Channel Electronics</div>
@@ -677,7 +719,9 @@
                 </div>
 
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/hydra.jpg')" aria-hidden="true"></div>
+                    <a href="https://youtu.be/c-Mbp2OUeVQ?feature=shared" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/hydra.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Hydra</h3>
                         <div class="project-meta">2023 • Percussion & 4-Channel Electronics</div>
@@ -696,7 +740,9 @@
             <h2 class="section-title">Sound Engineering Projects</h2>
             <div class="projects-grid">
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/grisey.jpg')" aria-hidden="true"></div>
+                    <a href="https://www.swr.de/kultur/musik/toter-neutronenstern-gibt-takt-bei-konzert-in-freiburg-an-100.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/grisey.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Ètoiles à neutrons</h3>
                         <div class="project-meta">2025 • Gérard Grisey Le Noir de l´Étoile</div>
@@ -704,7 +750,9 @@
                     </div>
                 </div>
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/byAccident.jpg')" aria-hidden="true"></div>
+                    <a href="https://www.kompassensemble.de/projects/by-accident" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/byAccident.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>BY ACCIDENT</h3>
                         <div class="project-meta">2025 • Kompass Ensemble</div>
@@ -713,7 +761,9 @@
                 </div>
 
                  <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/swr.jpg')" aria-hidden="true"></div>
+                    <a href="https://www.swr.de/kultur/musik/abschlusskonzert-donaueschinger-musiktage-live-2025-10-19-100.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/swr.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>SWR Experimentalstudio</h3>
                         <div class="project-meta">2025 • Donaueschinger Musiktage</div>
@@ -721,7 +771,9 @@
                     </div>
                 </div>
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/swr_grauschumacher.jpg')" aria-hidden="true"></div>
+                    <a href="https://www1.wdr.de/radio/wdr3/musik/musik-der-zeit/konzert-witten-25-grauschumacher-plusminus-100.html" class="project-photo-link">
+                        <div class="project-photo" style="background-image:url('images/swr_grauschumacher.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>SWR Experimentalstudio</h3>
                         <div class="project-meta">2025 • Wittener Tage für Neue Kammermusik</div>
@@ -767,7 +819,9 @@
             <h2 class="section-title">Research & Publications</h2>
             <div class="projects-grid">
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/phd.jpg')" aria-hidden="true"></div>
+                    <a href="https://college-glarean.unistra.fr/de/das-kolleg/organisation/mitglieder/doctorants/elena-ralli/" target="_blank" rel="noopener noreferrer" class="project-photo-link">
+                        <div class="project-photo-big" style="background-image:url('images/phd.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>PhD Research</h3>
                         <div class="project-meta">2023-2026 • Collège Doctoral Glarean</div>
@@ -779,7 +833,9 @@
                 </div>
 
                 <div class="project-card" tabindex="0">
-                    <div class="project-photo" style="background-image:url('images/paul-sacher.jpg')" aria-hidden="true"></div>
+                    <a href="https://www.paul-sacher-stiftung.ch/online-resources/mitteilungen/nr-38-mai-2025.html" class="project-photo-link">
+                        <div class="project-photo-big" style="background-image:url('images/paul-sacher.jpg')" aria-hidden="true"></div>
+                    </a>
                     <div class="overlay">
                         <h3>Paul Sacher Foundation</h3>
                         <div class="project-meta">2025 • Academic Publication</div>
@@ -788,7 +844,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" tabindex="0">
+                <!--<div class="project-card" tabindex="0">
                     <div class="project-photo" style="background-image:url('images/presentations.jpg')" aria-hidden="true"></div>
                     <div class="overlay">
                         <h3>Academic Presentations</h3>
@@ -796,7 +852,7 @@
                         <p>Presentations at conferences focusing on the relationship between scientific data and musical composition.</p>
                         <div class="project-details">September 2024, Cologne • August 2024, Chile</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -807,9 +863,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Composer & Sound Engineer</h3>
-                    <p>Elena Ralli is a composer and sound engineer based in Freiburg, Germany. Currently pursuing her PhD at the German-French Graduate College Glarean, she works with electronic composition and experimental sound design. She is also a trainee (Volontärin) for sound engineering and music informatics at the SWR Experimentalstudio.</p>
-                    <p>With a background in both astrophysics and music, Elena creates compositions that explore connections between science and sound, using programming and interactive technologies. Her PhD research focuses on developing compositional processes through the sonification of scientific data from astrophysics research.</p>
-                    <p>Her work includes chamber pieces with electronics, large-scale installations, and sound engineering for contemporary music performances.</p>
+                    <p>Elena Ralli, born in Athens, Greece, lives and works as a composer and  sound director in Freiburg, Germany. Her compositions include  instrumental music with electronic media, performance with electronics  and interactive sound installations. Since November 2024 she has been  working as a trainee sound director at the SWR Experimentalstudio. After studying physics (B.Sc.) in Athens and piano (B.Mus.) in Freiburg,  Elena completed a degree in electronic composition (M.Mus.). As a PhD  student in the field of artistic research, she investigates the  development of compositional processes through the use of astrophysical  data.</p>
                 </div>
                 <div class="about-photo">
                     <!-- Replace "your-photo.jpg" with your actual photo file name -->
@@ -847,7 +901,7 @@
         <div class="container">
             <h2 class="section-title">Contact</h2>
             <div class="contact-content">
-                <p>Available for commissions, collaborations, and sound engineering projects.</p>
+                <!--<p>Available for commissions, collaborations, and sound engineering projects.</p>-->
                 
                 <div class="contact-info">
                     <div class="contact-item">

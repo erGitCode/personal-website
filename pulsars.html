@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsars Installation | elena ralli</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' fill='%23ffffff' rx='4'/><path d='M3 16 Q4 14 5 12 T7 8 Q8 12 9 16 T11 20 Q12 22 13 20 T15 12 Q16 16 17 20 T19 24 Q20 20 21 16 T23 10 Q24 14 25 18 T27 16 Q28 12 29 16' stroke='%23000000' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .logo-wave {
+            width: 50px;
+            height: 25px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-name {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #000;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            color: #000;
+            line-height: 1;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .hero-content .description {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #888;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-photo {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-photo {
+            transform: scale(1.05);
+        }
+
+        .gallery-item h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.8) 100%);
+            color: #fff;
+            padding: 40px 20px 20px 20px;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover h3 {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f8f8;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: #000;
+            transition: all 0.3s ease;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #000 0%, #666 100%);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 9999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-name { font-size: 18px; }
+            .logo-subtitle { display: none; }
+
+            .mobile-menu-toggle { display: flex; }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                background: rgba(255,255,255,0.98);
+                padding: 12px;
+                margin: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.28s ease;
+            }
+
+            nav.open ul {
+                display: flex;
+                max-height: 480px;
+            }
+
+            nav a {
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: 8px 6px;
+            }
+
+            .mobile-menu-toggle span { width: 25px; height: 2px; background-color: #000; display:block; }
+            .mobile-menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+            .mobile-menu-toggle.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+            .mobile-menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+
+            .hero {
+                height: 50vh;
+                margin-top: 60px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .gallery-photo,
+            .gallery-item:nth-child(2n) .gallery-photo,
+            .gallery-item:nth-child(3n) .gallery-photo,
+            .gallery-item:nth-child(5n) .gallery-photo {
+                height: 300px;
+            }
+
+            .gallery-section {
+                padding: 60px 0;
+            }
+
+            .hero-content h1 {
+                letter-spacing: 0.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-photo {
+                height: 240px;
+                background-position: center top;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator"></div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <svg class="logo-wave" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 15 Q4 12 6 8 T10 3 Q12 6 14 12 T18 18 Q20 22 22 18 T26 8 Q28 15 30 18 T34 25 Q36 20 38 15 T42 7 Q44 12 46 18 T50 15 Q52 8 54 12 T58 15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text">
+                        <div class="logo-name">elena ralli</div>
+                        <div class="logo-subtitle">electronic composition & sound engineering</div>
+                    </div>
+                </a>
+                <nav aria-expanded="false">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#works">Works</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-toggle" role="button" tabindex="0" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>pulsars</h1>
+                <div class="subtitle">Interactive Installation • 2025</div>
+                <div class="description">
+                    <p>Choose a Pulsar and listen to its </p>
+                    <p>sound reflexion through the </p> 
+                    <p> instruments’ resonance. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05806.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05814.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05819.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <!--<div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05822.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05826.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div> -->
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05829.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05831.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05834.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05837.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+                <!--<div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05839.jpg')" aria-hidden="true"></div>
+                    <h3></h3>
+                </div>
+               <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05845.jpg')" aria-hidden="true"></div>
+                    <h3>Installation View 11</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05846.jpg')" aria-hidden="true"></div>
+                    <h3>Installation View 12</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-photo" style="background-image:url('images/ELZ-05856.jpg')" aria-hidden="true"></div>
+                    <h3>Installation View 13</h3>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Elena Ralli. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const scrollProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollIndicator.style.transform = `scaleX(${scrollProgress / 100})`;
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.borderBottom = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('nav');
+
+        function toggleMenu() {
+            const isOpen = nav.classList.toggle('open');
+            mobileToggle.classList.toggle('open', isOpen);
+            nav.setAttribute('aria-expanded', isOpen);
+        }
+
+        mobileToggle.addEventListener('click', toggleMenu);
+        mobileToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>
