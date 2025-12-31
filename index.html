@@ -203,13 +203,65 @@
         }
 
         .project-card {
+            position: relative;
             text-align: left;
             transition: all 0.3s ease;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
         }
+
+        /* Photo card + overlay */
+        .project-photo {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-photo,
+        .project-card.active .project-photo {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.7) 60%);
+            color: #fff;
+            padding: 18px;
+            transform: translateY(100%);
+            transition: transform 0.28s ease;
+        }
+
+        .project-card:hover .overlay,
+        .project-card.active .overlay,
+        .project-card:focus-within .overlay {
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            margin: 0 0 6px 0;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .overlay .project-meta {
+            color: rgba(255,255,255,0.85);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .overlay p { color: rgba(255,255,255,0.9); margin: 0 0 8px 0; }
 
         .project-card h3 {
             font-size: 24px;
@@ -602,57 +654,75 @@
         <div class="container">
             <h2 class="section-title">Recent Works</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Dancing around SgrA*</h3>
-                    <div class="project-meta">2025 • Ensemble, Electronics & Dance</div>
-                    <p>A 20-minute composition for large ensemble, electronics and dance, commissioned by Ensemble ö!. The piece is inspired by Sagittarius A*, the supermassive black hole at the center of our galaxy.</p>
-                    <div class="project-details">
-                        Version II premiered with soprano Daniela Argentino and dancer Joey Tan<br>
-                        Premiere: April 5, 2025, Theater Chur, Switzerland<br>
-                        <a href="https://ensemble-oe.ch/events/jadegruen-chur/" target="_blank" rel="noopener">→ Performance Details</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/dancing.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Dancing around SgrA*</h3>
+                        <div class="project-meta">2025 • Ensemble, Electronics & Dance</div>
+                        <p>A 20-minute composition for large ensemble, electronics and dance, commissioned by Ensemble ö!.</p>
+                        <div class="project-details">
+                            Version II premiered with soprano Daniela Argentino and dancer Joey Tan<br>
+                            Premiere: April 5, 2025, Theater Chur, Switzerland<br>
+                            <a href="https://ensemble-oe.ch/events/jadegruen-chur/" target="_blank" rel="noopener">→ Performance Details</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Ètoiles à neutrons</h3>
-                    <div class="project-meta">2025 • Interactive Installation</div>
-                    <p>Using pulsar data from the radiotelescopes Astropeiler Stockert and Dwingeloo.</p>
-                    <div class="project-details">Installation: November 14, 2025, Tonstudios MH Freiburg</div>
-                </div>
-
-                <div class="project-card">
-                    <h3>BassPhotons</h3>
-                    <div class="project-meta">2024 • Interactive Installation</div>
-                    <p>An interactive installation featuring a suspended double bass with embedded transducers, three pressure sensors, and laser radiation. Visitors can interact with light and sound in real-time, exploring the relationship between physical gesture and sonic response.</p>
-                    <div class="project-details">Installation: June 15-29 & September 8, 2024, Freiburg
-                        <a href="https://youtu.be/EmWCGj5tEZo?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/etoiles.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Ètoiles à neutrons</h3>
+                        <div class="project-meta">2025 • Interactive Installation</div>
+                        <p>Using pulsar data from the radiotelescopes Astropeiler Stockert and Dwingeloo.</p>
+                        <div class="project-details">Installation: November 14, 2025, Tonstudios MH Freiburg</div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Ursa</h3>
-                    <div class="project-meta">2024 • Bass Clarinet & 7-Channel Live Electronics</div>
-                    <p>A 7-minute piece for bass clarinet and 7-channel live electronics, inspired by the constellation Ursa and using spatial audio techniques.</p>
-                    <div class="project-details">Premiere: January 8, 2025, HEAR, Strasbourg, France
-                        <a href="https://youtu.be/yHOl47Esf1E?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/bassphotons.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>BassPhotons</h3>
+                        <div class="project-meta">2024 • Interactive Installation</div>
+                        <p>An interactive installation featuring a suspended double bass with embedded transducers and sensors.</p>
+                        <div class="project-details">Installation: June 15-29 & September 8, 2024, Freiburg
+                            <a href="https://youtu.be/EmWCGj5tEZo?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Atropos</h3>
-                    <div class="project-meta">2022 • Dance, Percussion & 8-Channel Electronics</div>
-                    <p>An 18-minute multimedia performance combining dance, percussion, and 8-channel live electronics.</p>
-                    <div class="project-details">Premiere: July 30, 2022, Depot.K Kunstprojekt, Freiburg
-                        <a href="https://youtu.be/dOHDzZnQajI?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/ursa.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Ursa</h3>
+                        <div class="project-meta">2024 • Bass Clarinet & 7-Channel Live Electronics</div>
+                        <p>A 7-minute piece for bass clarinet and 7-channel live electronics.</p>
+                        <div class="project-details">Premiere: January 8, 2025, HEAR, Strasbourg, France
+                            <a href="https://youtu.be/yHOl47Esf1E?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Hydra</h3>
-                    <div class="project-meta">2023 • Percussion & 4-Channel Electronics</div>
-                    <p>A 6-minute composition for percussion and 4-channel live electronics, named after the constellation Hydra.</p>
-                    <div class="project-details">Premiere: May 22, 2023, Humboldtsaal, Freiburg
-                        <a href="https://youtu.be/c-Mbp2OUeVQ?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/atropos.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Atropos</h3>
+                        <div class="project-meta">2022 • Dance, Percussion & 8-Channel Electronics</div>
+                        <p>An 18-minute multimedia performance combining dance, percussion, and 8-channel live electronics.</p>
+                        <div class="project-details">Premiere: July 30, 2022, Depot.K Kunstprojekt, Freiburg
+                            <a href="https://youtu.be/dOHDzZnQajI?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/hydra.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Hydra</h3>
+                        <div class="project-meta">2023 • Percussion & 4-Channel Electronics</div>
+                        <p>A 6-minute composition for percussion and 4-channel live electronics.</p>
+                        <div class="project-details">Premiere: May 22, 2023, Humboldtsaal, Freiburg
+                            <a href="https://youtu.be/c-Mbp2OUeVQ?feature=shared" target="_blank" rel="noopener">→ Performance Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -663,25 +733,34 @@
         <div class="container">
             <h2 class="section-title">Sound Engineering Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>…selig ist…</h3>
-                    <div class="project-meta">2025 • Mark André - …selig ist…</div>
-                    <p>Sound engineering for the pianist Pierre-Laurent Aimard performing Mark André's latest work at the Festival Styriarte.</p>
-                    <div class="project-details">July 15, 2025, Graz, Austria</div>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/selig.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>…selig ist…</h3>
+                        <div class="project-meta">2025 • Mark André - …selig ist…</div>
+                        <p>Sound engineering for the pianist Pierre-Laurent Aimard performing Mark André's latest work.</p>
+                        <div class="project-details">July 15, 2025, Graz, Austria</div>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Plus or Minus</h3>
-                    <div class="project-meta">2025 • Ming Tsao – Plus or Minus</div>
-                    <p>Sound engineering for the world premiere of Ming Tsao's "Plus or Minus" at the Wittener Tage für Neue Kammermusik.</p>
-                    <div class="project-details">May 28, 2025, Witten • June 28, 2025, Berlin</div>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/plusminus.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Plus or Minus</h3>
+                        <div class="project-meta">2025 • Ming Tsao – Plus or Minus</div>
+                        <p>Sound engineering for the world premiere of Ming Tsao's "Plus or Minus".</p>
+                        <div class="project-details">May 28, 2025, Witten • June 28, 2025, Berlin</div>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>At That Time</h3>
-                    <div class="project-meta">2025 • Daniel Peter Biró – At That Time</div>
-                    <p>Sound engineering for the world premiere of Daniel Peter Biró's "At That Time" with Ensemble Les Metaboles.</p>
-                    <div class="project-details">June 18, 2025, University of Music, Bergen, Norway</div>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/atthattime.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>At That Time</h3>
+                        <div class="project-meta">2025 • Daniel Peter Biró – At That Time</div>
+                        <p>Sound engineering for the world premiere of Daniel Peter Biró's "At That Time".</p>
+                        <div class="project-details">June 18, 2025, University of Music, Bergen, Norway</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -691,28 +770,36 @@
         <div class="container">
             <h2 class="section-title">Research & Publications</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>PhD Research</h3>
-                    <div class="project-meta">2023-2026 • Collège Doctoral Glarean</div>
-                    <p>Development of compositional processes through the sonification of scientific data from astrophysics research. A collaborative project between Hochschule für Musik Freiburg and Université de Strasbourg, exploring how astronomical phenomena can inform contemporary composition.</p>
-                    <div class="project-details">
-                         <!--Supervisors: Multiple institutions<br>-->
-                        <a href="https://college-glarean.unistra.fr/de/das-kolleg/organisation/mitglieder/doctorants/elena-ralli/" target="_blank" rel="noopener">→ Research Profile</a>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/phd.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>PhD Research</h3>
+                        <div class="project-meta">2023-2026 • Collège Doctoral Glarean</div>
+                        <p>Development of compositional processes through the sonification of scientific data from astrophysics research.</p>
+                        <div class="project-details">
+                            <a href="https://college-glarean.unistra.fr/de/das-kolleg/organisation/mitglieder/doctorants/elena-ralli/" target="_blank" rel="noopener">→ Research Profile</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Paul Sacher Foundation</h3>
-                    <div class="project-meta">2025 • Academic Publication</div>
-                    <p>"Astronomical Signals Used as Compositional Material in Gérard Grisey's Le Noir de l'Étoile" - An article exploring the intersection of spectral music and astronomical data in the work of Gérard Grisey.</p>
-                    <div class="project-details">Published in Mitteilungen der Paul Sacher Stiftung, Basel, Switzerland</div>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/paul-sacher.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Paul Sacher Foundation</h3>
+                        <div class="project-meta">2025 • Academic Publication</div>
+                        <p>An article exploring the intersection of spectral music and astronomical data.</p>
+                        <div class="project-details">Published in Mitteilungen der Paul Sacher Stiftung, Basel, Switzerland</div>
+                    </div>
                 </div>
 
-                <div class="project-card">
-                    <h3>Academic Presentations</h3>
-                    <div class="project-meta">2024 • International Conferences</div>
-                    <p>Presentations at the Gesellschaft für Musikforschung Symposium in Cologne, Universidad de Chile in Santiago, and Universidad de Valparaíso in Viña del Mar, focusing on the relationship between scientific data and musical composition.</p>
-                    <div class="project-details">September 2024, Cologne • August 2024, Chile</div>
+                <div class="project-card" tabindex="0">
+                    <div class="project-photo" style="background-image:url('images/presentations.jpg')" aria-hidden="true"></div>
+                    <div class="overlay">
+                        <h3>Academic Presentations</h3>
+                        <div class="project-meta">2024 • International Conferences</div>
+                        <p>Presentations at conferences focusing on the relationship between scientific data and musical composition.</p>
+                        <div class="project-details">September 2024, Cologne • August 2024, Chile</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -835,10 +922,25 @@
         });
 
         // Project card hover effects
-        document.querySelectorAll('.project-card h3').forEach(title => {
-            title.addEventListener('click', () => {
-                const card = title.closest('.project-card');
-                card.style.transform = card.style.transform === 'scale(1.02)' ? 'scale(1)' : 'scale(1.02)';
+        // Project card hover/tap effects: allow title click (desktop) and touch toggle (mobile)
+        document.querySelectorAll('.project-card').forEach(card => {
+            const title = card.querySelector('h3');
+            if (title) {
+                title.addEventListener('click', () => {
+                    card.style.transform = card.style.transform === 'scale(1.02)' ? 'scale(1)' : 'scale(1.02)';
+                });
+            }
+            // Touch devices: toggle overlay on first tap
+            card.addEventListener('touchstart', (e) => {
+                // prevent immediate navigation if links exist; toggle active state
+                if (!card.classList.contains('active')) {
+                    card.classList.add('active');
+                    e.preventDefault();
+                }
+            });
+            // Remove active state when tapping elsewhere
+            document.addEventListener('touchstart', (ev) => {
+                if (!card.contains(ev.target)) card.classList.remove('active');
             });
         });
     </script>
